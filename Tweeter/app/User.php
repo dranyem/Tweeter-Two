@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'username',
     ];
 
     /**
@@ -36,4 +36,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function tweets(){
+        return $this->hasOne('App\Tweet');
+    }
+    function likes(){
+        return $this->hasOne('App\Like');
+    }
+    function comments(){
+        return $this->hasOne('App\Comment');
+    }
+    function follows(){
+        return $this->hasOne('App\Follow');
+    }
+    function profiles(){
+        return $this->hasOne('App\Profile');
+    }
 }
