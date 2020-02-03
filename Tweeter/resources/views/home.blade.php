@@ -15,6 +15,9 @@
                     @endif
 
                     You are logged in!
+                    <a href="/profile">Profile</a>
+                    <a href="/followers">Followers</a>
+
                 </div>
             </div>
         </div>
