@@ -20,5 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/setup', 'ProfileController@show');
 Route::post('/profile/setup', 'ProfileController@createProfile');
+Route::get('/follows', 'FollowController@show');
+Route::get('/follows/followUser', 'FollowController@follow');
+Route::get('/follows/unfollowUser', 'FollowController@unfollow');
 
 

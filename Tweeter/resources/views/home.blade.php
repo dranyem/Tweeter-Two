@@ -16,7 +16,7 @@
 
                     You are logged in!
                     <a href="/profile">Profile</a>
-                    <a href="/followers">Followers</a>
+                    <a href="/follows">Tweeter Followers</a>
 
                 </div>
             </div>
