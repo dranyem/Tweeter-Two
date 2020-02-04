@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\ProfileController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,10 +20,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/profile/setup', 'ProfileController@show');
 Route::post('/profile/setup', 'ProfileController@createProfile');
+Route::get('profile/view/{id}', 'ProfileController@showTweetProfile');
+
 Route::get('/follows', 'FollowController@show');
 Route::get('/follows/followUser', 'FollowController@follow');
 Route::get('/follows/unfollowUser', 'FollowController@unfollow');
 
 
+Route::post('/tweet/create', 'TweetController@createTweet');

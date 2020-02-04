@@ -8,11 +8,6 @@ use Redirect;
 
 class FollowController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     function show(){
         $followedByUser = \App\User::find(Auth::user()->id)->follows;
 

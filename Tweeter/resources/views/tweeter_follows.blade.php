@@ -1,7 +1,7 @@
 <div>
     <h1>Tweeter Users You are Folllowing</h1>
     @foreach ($followedByUser as $user)
-    <a href="/profile/{{$user[1]}}"><h5>{{$user[3]." ".$user[4]}}</h5> {{$user[2]}}</a>
+    <a href="/profile/view/{{$user[1]}}"><h5>{{$user[3]." ".$user[4]}}</h5> {{$user[2]}}</a>
 
         <form action="/follows/unfollowUser" method="get">
             <button type="submit" name="id" value="{{$user[0]}}">Unfollow</button>

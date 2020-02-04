@@ -33,4 +33,8 @@ class ProfileController extends Controller
 
         return redirect('/home');
     }
+    function showTweetProfile($id){
+
+        return view('tweeter_profile');
+    }
 }

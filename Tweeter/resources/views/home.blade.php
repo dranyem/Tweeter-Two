@@ -1,26 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                    <a href="/profile">Profile</a>
-                    <a href="/follows">Tweeter Followers</a>
-
-                </div>
-            </div>
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
         </div>
-    </div>
-</div>
+    @endif
+    <a href="/profile">Profile</a>
+    <a href="/follows">Tweeter Followers</a>
+    @include('create_tweet_form')
+    @include('tweet_feed')
 @endsection
