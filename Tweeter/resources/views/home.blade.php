@@ -6,7 +6,7 @@
             {{ session('status') }}
         </div>
     @endif
-    <a href="/profile">Profile</a>
+    <a href="/profile/view/{{Auth::user()->id}}">Profile</a>
     <a href="/follows">Tweeter Followers</a>
     @include('create_tweet_form')
     @include('tweet_feed')

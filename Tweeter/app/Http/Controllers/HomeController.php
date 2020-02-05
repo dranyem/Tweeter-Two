@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $listOfTweets = \App\Tweet::all();
+
+        // return dd($listOfTweets);
         return view('home');
     }
 }

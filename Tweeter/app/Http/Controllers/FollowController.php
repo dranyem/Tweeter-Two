@@ -22,6 +22,9 @@ class FollowController extends Controller
         }
         $usersToFollow = \App\User::whereNotIn('id', $listOfFollowedByUserId)->get();
 
+
+
+
         return view('tweeter_follows',['usersToFollow' => $usersToFollow,
                                         'followedByUser' => $listOfFollowedByUser]);
     }
