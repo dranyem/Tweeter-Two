@@ -9,7 +9,7 @@ class Tweet extends Model
     protected $table = 'tweets';
 
     function users(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
     function likes(){
         return $this->hasMany('App\Like');

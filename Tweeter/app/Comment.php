@@ -9,9 +9,9 @@ class Comment extends Model
     protected $table = 'comments';
 
     function tweets(){
-        return $this->belongsTo('App\Tweet');
+        return $this->belongsTo('App\Tweet', 'tweet_id');
     }
     function users(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 }

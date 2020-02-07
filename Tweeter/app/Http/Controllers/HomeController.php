@@ -24,8 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $listOfTweets = \App\Tweet::all();
-
+        $listOfTweets = \App\Tweet::get();
         // return dd($listOfTweets);
         return view('home');
     }

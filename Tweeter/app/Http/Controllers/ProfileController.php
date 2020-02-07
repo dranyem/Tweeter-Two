@@ -36,9 +36,8 @@ class ProfileController extends Controller
         return redirect('/home');
     }
     function showTweetProfile($id){
-        $profile = \App\User::with('profiles')->find($id);
-        $profileTweets = \App\User::with('tweets', 'profiles')->find($id);
-
+        $profile = \App\User::find($id);
+        $profileTweets = \App\Tweet::with('users.profiles')->where('user_id', $id)->get();
         return view('tweeter_profile',['profile' => $profile,
                                         'profileTweets' => $profileTweets
         ]);
@@ -60,12 +59,10 @@ class ProfileController extends Controller
 
             $profile->save();
 
-            redirect('/profile/views/'.$request->id);
+           return redirect('/profile/view/'.$request->id);
         }else {
-            redirect('/login');
+           return redirect('/login');
         }
-
-
     }
     function showEditProfile(Request $request){
         $profile = \App\Profile::find($request->id);

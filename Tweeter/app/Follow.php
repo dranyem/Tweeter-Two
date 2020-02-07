@@ -9,6 +9,6 @@ class Follow extends Model
     protected $table = 'follows';
 
     function users(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 }

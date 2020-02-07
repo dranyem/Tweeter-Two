@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Follow;
 use Illuminate\Http\Request;
 use Auth;
 use Redirect;
@@ -9,24 +10,15 @@ use Redirect;
 class FollowController extends Controller
 {
     function show(){
-        $followedByUser = \App\User::find(Auth::user()->id)->follows;
-
-        $listOfFollowedByUser = [];
-        $listOfFollowedByUserId = [1,Auth::user()->id];
-        foreach($followedByUser as $follow){
-            $username = \App\User::find($follow->followed_by);
-            $name= \App\User::find($follow->followed_by)->profiles;
-            array_push($listOfFollowedByUser,[$follow->id, $follow->followed_by, $username->username, $name->firstname, $name->lastname]);
-            array_push($listOfFollowedByUserId, $follow->followed_by);
-
-        }
-        $usersToFollow = \App\User::whereNotIn('id', $listOfFollowedByUserId)->get();
-
-
-
+        $followedByUser = \App\User::with('profiles')
+                            ->whereIn('id', \App\Follow::select('followed_by')->where('user_id', Auth::user()->id)->get())
+                            ->get();
+        $usersToFollow = \App\User::with('profiles')
+                            ->whereNotIn('id', \App\Follow::select('followed_by')->where('user_id', Auth::user()->id)->get())
+                            ->get();
 
         return view('tweeter_follows',['usersToFollow' => $usersToFollow,
-                                        'followedByUser' => $listOfFollowedByUser]);
+                                        'followedByUser' => $followedByUser]);
     }
     function follow(Request $request){
         $follow = new \App\Follow();

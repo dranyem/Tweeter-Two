@@ -9,6 +9,6 @@ class Profile extends Model
     protected $table = 'profiles';
 
     function users(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 }

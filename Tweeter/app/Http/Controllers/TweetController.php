@@ -22,10 +22,35 @@ class TweetController extends Controller
             $tweet->save();
 
             return Redirect::back();
-
         }else {
-            redirect('/login');
+            return redirect('/login');
         }
+    }
 
+    function likeTweet(Request $request){
+        if(Auth::check()){
+            $like = new \App\Like();
+            $like->user_id = Auth::user()->id;
+            $like->tweet_id = $request->tweetId;
+            $like->save();
+            return Redirect::back();
+        }else {
+            return redirect('/login');
+        }
+    }
+
+    function unlikeTweet(Request $request){
+        if(Auth::check()){
+            \App\Like::where('user_id',Auth::user()->id)
+                        ->where('tweet_id', $request->tweetId)
+                        ->delete();
+            return Redirect::back();
+        }else {
+            return redirect('/login');
+        }
+    }
+    function viewProfileTweet($id){
+        $tweet =\App\Tweet::find($id);
+        return view('tweeter_tweet_view', ['tweet'=> $tweet]);
     }
 }

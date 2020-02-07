@@ -9,11 +9,17 @@
 @endif
 <hr>
 
-@foreach ($profileTweets->tweets as $tweet)
-    <div class="tweet">
-    <h2>{{$profileTweets->profiles->firstname}} {{$profileTweets->profiles->lastname}}</h2>
-    <h3><i> @ {{$profileTweets->username}}</i></h3>
-    <p>{{$tweet->content}}</p>
+@foreach ($profileTweets as $tweet)
+    <h2>{{$tweet->users->profiles->firstname}} {{$tweet->users->profiles->lastname}}</h2>
+    <h3><i> @ {{$tweet->users->username}}</i></h3>
+    <a href="/tweet/view/{{$tweet->id}}"> <p>{{$tweet->content}}</p></a>
     <i>{{$tweet->created_at->diffForHumans()}}</i>
-    </div>
+
+    @if(in_array(Auth::user()->id, $tweet->likes->pluck('user_id')->toArray()))
+        <a href="/tweet/unlike?tweetId={{$tweet->id}}">Unlike</a>
+    @else
+        <a href="/tweet/like?tweetId={{$tweet->id}}">Like</a>
+    @endif
+    <h3>{{$tweet->likes->count()}} Likes</h3>
+    <h3>{{$tweet->comments->count()}} Comments</h3>
 @endforeach
