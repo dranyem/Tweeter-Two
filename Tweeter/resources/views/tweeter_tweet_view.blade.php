@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <h2>{{$tweet->users->profiles->firstname}} {{$tweet->users->profiles->lastname}}</h2>
 <i>@ {{$tweet->users->username}}</i>
 <p>{{$tweet->content}}</p>
@@ -49,3 +52,5 @@ liked this tweet.</i>
     @endif
     --------------------------------------------------------------------------------------------------------
 @endforeach
+
+@endsection

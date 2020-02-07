@@ -50,7 +50,7 @@ class TweetController extends Controller
         }
     }
     function viewProfileTweet($id){
-        $tweet =\App\Tweet::find($id);
+        $tweet =\App\Tweet::orderBy('created_at', 'asc')->find($id);
         return view('tweeter_tweet_view', ['tweet'=> $tweet]);
     }
 
