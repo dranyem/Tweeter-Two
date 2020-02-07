@@ -9,6 +9,7 @@
 @endif
 <hr>
 
+<h1>Tweets : </h1>
 @foreach ($profileTweets as $tweet)
     <h2>{{$tweet->users->profiles->firstname}} {{$tweet->users->profiles->lastname}}</h2>
     <h3><i> @ {{$tweet->users->username}}</i></h3>
@@ -22,4 +23,5 @@
     @endif
     <h3>{{$tweet->likes->count()}} Likes</h3>
     <h3>{{$tweet->comments->count()}} Comments</h3>
+    -----------------------------------------------------------------------------------------------------------
 @endforeach

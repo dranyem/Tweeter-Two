@@ -9,6 +9,7 @@
     <a href="/tweet/like?tweetId={{$tweet->id}}">Like</a>
 @endif
 <h3>{{$tweet->likes->count()}} Likes</h3>
+<h3>{{$tweet->comments->count()}} Comments</h3>
 
 
 <i>
@@ -28,9 +29,23 @@
 @endforeach
 liked this tweet.</i>
 <form action="/tweet/comment" method="post">
-<textarea name="comment" placeholder="Comment" cols="40" rows="3"></textarea>
-<input type="submit" value="Comment">
+    @csrf
+    <input type="hidden" name="tweetId" value="{{$tweet->id}}">
+    <textarea name="comment" placeholder="Comment" cols="40" rows="3"></textarea>
+    <input type="submit" value="Comment">
 </form>
 
-<h5>Comments : </h5>
+<h4>Comments : </h4>
 
+@foreach ($tweet->comments as $comment)
+    <h4>{{$comment->users->profiles->firstname}} {{$comment->users->profiles->lastname}}</h4>
+    <i>@ {{$comment->users->username}}</i>
+    <p>{{$comment->content}}</p>
+    <h5>{{$comment->created_at->diffForHumans()}}</h5>
+
+    @if ($comment->user_id == Auth::user()->id)
+        <a href="/tweet/comment/edit?commentId={{$comment->id}}&tweetId={{$tweet->id}}">Edit</a>
+        <a href="/tweet/comment/delete?commentId={{$comment->id}}">Delete</a><br>
+    @endif
+    --------------------------------------------------------------------------------------------------------
+@endforeach

@@ -53,4 +53,32 @@ class TweetController extends Controller
         $tweet =\App\Tweet::find($id);
         return view('tweeter_tweet_view', ['tweet'=> $tweet]);
     }
+
+    function commentOnTweet(Request $request){
+        if(Auth::check()){
+            $request->validate([
+                'comment' => 'required|max:250'
+            ]);
+
+            $comment = new \App\Comment();
+            $comment->user_id = Auth::user()->id;
+            $comment->tweet_id = $request->tweetId;
+            $comment->content = $request->comment;
+            $comment->save();
+
+            return Redirect::back();
+        } else {
+            return redirect('/login');
+        }
+    }
+
+    function commentDelete(Request $request){
+        if(Auth::check()){
+            \App\Comment::destroy($request->commentId);
+
+            return Redirect::back();
+        } else {
+            return redirect('/login');
+        }
+    }
 }
