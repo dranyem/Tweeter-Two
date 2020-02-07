@@ -31,14 +31,31 @@ class TweetController extends Controller
         if(Auth::check()){
             \App\Tweet::destroy($request->tweetId);
 
-            return Redirect::back();
+            return redirect('/home');
         }else{
             return redirect('/login');
         }
     }
 
     function editTweet(Request $request){
+        if(Auth::check()){
+            $request->validate([
+                'content' => 'required|max:250'
+            ]);
 
+            $tweet = \App\Tweet::find($request->tweetId);
+            $tweet->content = $request->content;
+            $tweet->save();
+
+            return redirect('/tweet/view/'.$request->tweetId);
+        }else{
+            return redirect('/login');
+        }
+    }
+
+    function editTweetView(Request $request){
+        $tweet =\App\Tweet::orderBy('created_at', 'asc')->find($request->tweetId);
+        return view('tweeter_tweet_edit')->with(['tweet'=> $tweet]);
     }
 
     function likeTweet(Request $request){
@@ -94,5 +111,8 @@ class TweetController extends Controller
         } else {
             return redirect('/login');
         }
+    }
+    function commentEdit(Request $request){
+
     }
 }
