@@ -33,10 +33,11 @@ Route::get('/follows/unfollowUser', 'FollowController@unfollow');
 
 
 Route::post('/tweet/create', 'TweetController@createTweet');
+Route::get('/tweet/edit', 'TweetController@editTweet');
+Route::get('/tweet/delete', 'TweetController@deleteTweet');
 
 Route::get('/tweet/like', 'TweetController@likeTweet');
 Route::get('/tweet/unlike', 'TweetController@unlikeTweet');
-
 Route::get('/tweet/view/{id}', 'TweetController@viewProfileTweet');
 
 Route::post('/tweet/comment', 'TweetController@commentOnTweet');

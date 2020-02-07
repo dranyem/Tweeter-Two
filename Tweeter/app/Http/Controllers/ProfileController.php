@@ -37,7 +37,9 @@ class ProfileController extends Controller
     }
     function showTweetProfile($id){
         $profile = \App\User::find($id);
-        $profileTweets = \App\Tweet::with('users.profiles')->where('user_id', $id)->get();
+        $profileTweets = \App\Tweet::with('users.profiles')->where('user_id', $id)
+                                    ->latest()
+                                    ->get();
         return view('tweeter_profile',['profile' => $profile,
                                         'profileTweets' => $profileTweets
         ]);

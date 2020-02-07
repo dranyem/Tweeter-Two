@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <h1>{{$profile->profiles->firstname}} {{ $profile->profiles->lastname}}</h1>
 <h3>{{$profile->email}}</h3>
 <h2><i>@ {{$profile->username}}</i></h2>
@@ -11,8 +13,10 @@
 
 <h1>Tweets : </h1>
 @foreach ($profileTweets as $tweet)
-    <h2>{{$tweet->users->profiles->firstname}} {{$tweet->users->profiles->lastname}}</h2>
-    <h3><i> @ {{$tweet->users->username}}</i></h3>
+    <a href="/profile/view/{{$tweet->user_id}}">
+        <h2>{{$tweet->users->profiles->firstname}} {{$tweet->users->profiles->lastname}}</h2>
+        <h3><i> @ {{$tweet->users->username}}</i></h3>
+    </a>
     <a href="/tweet/view/{{$tweet->id}}"> <p>{{$tweet->content}}</p></a>
     <i>{{$tweet->created_at->diffForHumans()}}</i>
 
@@ -21,7 +25,14 @@
     @else
         <a href="/tweet/like?tweetId={{$tweet->id}}">Like</a>
     @endif
+    @if (Auth::user()->id == $tweet->user_id)
+    <a href="/tweet/edit?tweetId={{$tweet->id}}">Edit</a>
+    <a href="/tweet/delete?tweetId={{$tweet->id}}">Delete</a>
+    @endif
     <h3>{{$tweet->likes->count()}} Likes</h3>
     <h3>{{$tweet->comments->count()}} Comments</h3>
     -----------------------------------------------------------------------------------------------------------
 @endforeach
+@endsection
+
+

@@ -11,6 +11,11 @@
 @else
     <a href="/tweet/like?tweetId={{$tweet->id}}">Like</a>
 @endif
+
+@if (Auth::user()->id == $tweet->user_id)
+<a href="/tweet/edit?tweetId={{$tweet->id}}">Edit</a>
+<a href="/tweet/delete?tweetId={{$tweet->id}}">Delete</a>
+@endif
 <h3>{{$tweet->likes->count()}} Likes</h3>
 <h3>{{$tweet->comments->count()}} Comments</h3>
 
@@ -30,7 +35,10 @@
         @endif
     @endif
 @endforeach
-liked this tweet.</i>
+@if ($tweet->likes->count()!=0)
+    liked this tweet.
+@endif
+</i>
 <form action="/tweet/comment" method="post">
     @csrf
     <input type="hidden" name="tweetId" value="{{$tweet->id}}">

@@ -1,3 +1,6 @@
+
+@extends('layouts.app')
+@section('content')
 <div>
     <h1>Tweeter Users You are Folllowing</h1>
     @foreach ($followedByUser as $user)
@@ -20,3 +23,5 @@
         @endif
     @endforeach
 </div>
+@endsection
+

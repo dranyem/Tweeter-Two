@@ -24,8 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $listOfTweets = \App\Tweet::get();
-        // return dd($listOfTweets);
-        return view('home');
+        $tweets = \App\Tweet::whereIn('user_id', \App\Follow::where('user_id', Auth::user()->id)->get('followed_by'))
+                            ->orWhere('user_id', Auth::user()->id)
+                            ->latest()
+                            ->get();
+        return view('home')->with(['tweets'=>$tweets]);
     }
 }

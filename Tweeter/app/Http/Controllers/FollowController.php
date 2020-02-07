@@ -10,8 +10,7 @@ use Redirect;
 class FollowController extends Controller
 {
     function show(){
-        $followedByUser = \App\User::with('profiles')
-                            ->whereIn('id', \App\Follow::select('followed_by')->where('user_id', Auth::user()->id)->get())
+        $followedByUser = \App\User::whereIn('id', \App\Follow::select('followed_by')->where('user_id', Auth::user()->id)->get())
                             ->get();
         $usersToFollow = \App\User::with('profiles')
                             ->whereNotIn('id', \App\Follow::select('followed_by')->where('user_id', Auth::user()->id)->get())
@@ -30,7 +29,9 @@ class FollowController extends Controller
     }
 
     function unfollow(Request $request){
-        \App\Follow::destroy($request->id);
+        \App\Follow::where('user_id', Auth::user()->id)
+                    ->where('followed_by', $request->id)
+                    ->delete();
         return Redirect::back();
     }
 }

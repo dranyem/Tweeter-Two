@@ -27,6 +27,20 @@ class TweetController extends Controller
         }
     }
 
+    function deleteTweet(Request $request){
+        if(Auth::check()){
+            \App\Tweet::destroy($request->tweetId);
+
+            return Redirect::back();
+        }else{
+            return redirect('/login');
+        }
+    }
+
+    function editTweet(Request $request){
+
+    }
+
     function likeTweet(Request $request){
         if(Auth::check()){
             $like = new \App\Like();
