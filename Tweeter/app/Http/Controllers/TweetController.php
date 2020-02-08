@@ -80,6 +80,7 @@ class TweetController extends Controller
             return redirect('/login');
         }
     }
+
     function viewProfileTweet($id){
         $tweet =\App\Tweet::orderBy('created_at', 'asc')->find($id);
         return view('tweeter_tweet_view', ['tweet'=> $tweet]);
@@ -112,7 +113,27 @@ class TweetController extends Controller
             return redirect('/login');
         }
     }
-    function commentEdit(Request $request){
 
+    function commentEdit(Request $request){
+        if(Auth::check()){
+            $request->validate([
+                'content' => 'required|max:250'
+            ]);
+
+            $comment = \App\Comment::find($request->commentId);
+            $comment->content = $request->content;
+            $comment->save();
+
+            return redirect('/tweet/view/'.$request->tweetId);
+
+        }else{
+            return redirect('login');
+        }
+    }
+
+    function commentEditView(Request $request){
+        $tweet = \App\Tweet::find($request->tweetId);
+
+        return view('tweeter_tweet_comment_edit')->with(['tweet' => $tweet, 'commentId' => $request->commentId]);
     }
 }

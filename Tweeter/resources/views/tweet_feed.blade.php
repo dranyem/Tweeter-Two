@@ -16,7 +16,7 @@
         <a href="/tweet/edit?tweetId={{$tweet->id}}">Edit</a>
         <a href="/tweet/delete?tweetId={{$tweet->id}}">Delete</a>
     @endif
-    <h3>{{$tweet->likes->count()}} Likes</h3>
-    <h3>{{$tweet->comments->count()}} Comments</h3>
+    <h3> <a href="/tweet/view/{{$tweet->id}}">{{$tweet->likes->count()}} Likes</a></h3>
+    <h3> <a href="/tweet/view/{{$tweet->id}}">{{$tweet->comments->count()}} Comments</a></h3>
     -----------------------------------------------------------------------------------------------------------
 @endforeach

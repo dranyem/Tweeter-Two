@@ -31,6 +31,7 @@ Route::get('/follows', 'FollowController@show');
 Route::get('/follows/followUser', 'FollowController@follow');
 Route::get('/follows/unfollowUser', 'FollowController@unfollow');
 
+Route::get('/tweet/view/{id}', 'TweetController@viewProfileTweet');
 
 Route::post('/tweet/create', 'TweetController@createTweet');
 Route::get('/tweet/edit', 'TweetController@editTweetView');
@@ -39,8 +40,8 @@ Route::get('/tweet/delete', 'TweetController@deleteTweet');
 
 Route::get('/tweet/like', 'TweetController@likeTweet');
 Route::get('/tweet/unlike', 'TweetController@unlikeTweet');
-Route::get('/tweet/view/{id}', 'TweetController@viewProfileTweet');
 
 Route::post('/tweet/comment', 'TweetController@commentOnTweet');
 Route::get('/tweet/comment/delete', 'TweetController@commentDelete');
-Route::get('/tweet/comment/edit', 'TweetController@commentEdit');
+Route::post('/tweet/comment/edit', 'TweetController@commentEdit');
+Route::get('/tweet/comment/edit', 'TweetController@commentEditView');
