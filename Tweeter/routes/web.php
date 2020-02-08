@@ -21,9 +21,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/user/delete', 'ProfileController@userDelete');
+Route::post('/user/edit', 'ProfileController@userEdit');
+
+Route::get('/profile/view/{id}', 'ProfileController@showTweetProfile');
 Route::get('/profile/setup', 'ProfileController@show');
 Route::post('/profile/setup', 'ProfileController@createProfile');
-Route::get('/profile/view/{id}', 'ProfileController@showTweetProfile');
 Route::post('/profile/edit', 'ProfileController@editProfile');
 Route::get('/profile/edit', 'ProfileController@showEditProfile');
 
