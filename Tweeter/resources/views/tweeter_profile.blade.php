@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<img class="image is-128x128" src="/storage/avatars/{{$profile->profiles->avatar}}" alt="">
 <h1>{{$profile->profiles->firstname}} {{ $profile->profiles->lastname}}</h1>
 <h3>{{$profile->email}}</h3>
 <h2><i>@ {{$profile->username}}</i></h2>

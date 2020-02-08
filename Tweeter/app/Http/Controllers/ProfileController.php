@@ -23,8 +23,12 @@ class ProfileController extends Controller
             'firstName' => 'required|max:50',
             'lastName' => 'required|max:50',
             'bio' => 'required|max:100',
-            'birthDate'=> 'required'
+            'birthDate'=> 'required',
+            'location' => 'required',
+            'avatar' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+        $avatarName = Auth::user()->id.'_avatar'.time().'.'.request()->avatar->getClientOriginalExtension();
+        $request->avatar->storeAs('avatars',$avatarName);
 
         $profile = new \App\Profile();
         $profile->firstname = $request->firstName;
@@ -32,6 +36,8 @@ class ProfileController extends Controller
         $profile->bio = $request->bio;
         $profile->birthdate = $request->birthDate;
         $profile->user_id = $request->userId;
+        $profile->location =$request->location;
+        $profile->avatar = $avatarName;
         $profile->save();
 
         return redirect('/home');
@@ -74,6 +80,11 @@ class ProfileController extends Controller
 
     function userDelete(Request $request){
         if(Auth::check()){
+            \App\Profile::where('user_id', $request->id)->delete();
+            \App\Follow::where('user_id', $request->id)->delete();
+            \App\Tweet::where('user_id', $request->id)->delete();
+            \App\Comment::where('user_id', $request->id)->delete();
+            \App\Like::where('user_id', $request->id)->delete();
             \App\User::destroy($request->id);
         }
         return redirect('/login');
