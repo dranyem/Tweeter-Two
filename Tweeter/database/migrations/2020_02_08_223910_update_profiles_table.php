@@ -14,7 +14,7 @@ class UpdateProfilesTable extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->string('avatar')->default('user.jpg');
+            $table->string('avatar')->default('user.svg');
             $table->string('location')->default('Earth');
         });
     }

@@ -63,7 +63,7 @@
 
 
 <h1>Tweets : </h1>
-@foreach ($profileTweets as $tweet)
+@foreach ($profile->tweets as $tweet)
     <a href="/profile/view/{{$tweet->user_id}}">
         <h2>{{$tweet->users->profiles->firstname}} {{$tweet->users->profiles->lastname}}</h2>
         <h3><i> @ {{$tweet->users->username}}</i></h3>

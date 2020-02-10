@@ -27,8 +27,12 @@ class ProfileController extends Controller
             'location' => 'required',
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        $avatarName = Auth::user()->id.'_avatar'.time().'.'.request()->avatar->getClientOriginalExtension();
-        $request->avatar->storeAs('avatars',$avatarName);
+        if(!empty($request->avatar)){
+            $avatarName = Auth::user()->id.'_avatar'.time().'.'.request()->avatar->getClientOriginalExtension();
+            $request->avatar->storeAs('avatars',$avatarName);
+        }else {
+            $avatarName= 'user.svg';
+        }
 
         $profile = new \App\Profile();
         $profile->firstname = $request->firstName;
@@ -44,12 +48,7 @@ class ProfileController extends Controller
     }
     function showTweetProfile($id){
         $profile = \App\User::find($id);
-        $profileTweets = \App\Tweet::with('users.profiles')->where('user_id', $id)
-                                    ->latest()
-                                    ->get();
-        return view('tweeter_profile',['profile' => $profile,
-                                        'profileTweets' => $profileTweets
-        ]);
+        return view('tweeter_profile',['profile' => $profile]);
     }
 
     function editProfile(Request $request){
