@@ -12,8 +12,7 @@ class FollowController extends Controller
     function show(){
         $followedByUser = \App\User::whereIn('id', \App\Follow::select('followed_by')->where('user_id', Auth::user()->id)->get())
                             ->get();
-        $usersToFollow = \App\User::with('profiles')
-                            ->whereNotIn('id', \App\Follow::select('followed_by')->where('user_id', Auth::user()->id)->get())
+        $usersToFollow = \App\User::whereNotIn('id', \App\Follow::select('followed_by')->where('user_id', Auth::user()->id)->get())
                             ->get();
 
         return view('tweeter_follows',['usersToFollow' => $usersToFollow,

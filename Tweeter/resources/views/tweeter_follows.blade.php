@@ -45,7 +45,7 @@
                                     <p class="title has-text-primary is-5">{{$user->profiles->firstname." ".$user->profiles->lastname}}</p>
                                     <p class="subtitle has-text-primary is-6"><i>@ {{$user->username}}</i></p>
                                     <form action="/follows/followUser" method="get">
-                                        <button class="button is-success" type="submit"name="id" value="{{$user->id}}">Follow</button>
+                                        <button class="button is-small is-success" type="submit"name="id" value="{{$user->id}}">Follow</button>
                                     </form>
                                 </div>
                             </div>

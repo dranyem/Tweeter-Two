@@ -42,13 +42,9 @@
                 </span>
                 <span class="is-size-5">Member since : {{$profile->created_at->format('m-d-Y')}}</span>
             </div>
-
-            <p></p>
-            <p></p>
-            <p></p>
             @if (Auth::user()->id == $profile->id)
                 <a href="/profile/edit?id={{Auth::user()->id}}">
-                    <button class="button is-info">
+                    <button class="button is-large is-info">
                         <span class="icon is-small">
                             <i class="fas fa-edit"></i>
                         </span>
@@ -56,15 +52,30 @@
                     </button>
                 </a>
             @endif
+            @if (!(in_array($profile->id, Auth::user()->follows->pluck('followed_by')->toArray())))
+                @if ($profile->id != Auth::user()->id)
+                    <form action="/follows/followUser" method="get">
+                        <button class="button is-large is-success" type="submit"name="id" value="{{$profile->id}}">Follow</button>
+                    </form>
+                @endif
+            @else
+                <form action="/follows/unfollowUser" method="get">
+                    <button class="button is-large is-danger" type="submit" name="id" value="{{$profile->id}}">Unfollow</button>
+                </form>
+            @endif
         </div>
     </div>
 </div>
 
+<div class="card">
+    <header class="card-header">
+        <p class="card-header-title has-text-primary title is-3">Tweets</p>
+    </header>
 
+    @foreach ($profile->tweets as $tweet)
+     @include('tweet.tweet')
 
-<h1>Tweets : </h1>
-@foreach ($profile->tweets as $tweet)
-    <a href="/profile/view/{{$tweet->user_id}}">
+    {{-- <a href="/profile/view/{{$tweet->user_id}}">
         <h2>{{$tweet->users->profiles->firstname}} {{$tweet->users->profiles->lastname}}</h2>
         <h3><i> @ {{$tweet->users->username}}</i></h3>
     </a>
@@ -82,8 +93,14 @@
     @endif
     <h3>{{$tweet->likes->count()}} Likes</h3>
     <h3>{{$tweet->comments->count()}} Comments</h3>
-    -----------------------------------------------------------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------- --}}
 @endforeach
+
+</div>
+
+
+
+
 @endsection
 
 
