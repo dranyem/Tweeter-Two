@@ -25,7 +25,7 @@ class ProfileController extends Controller
             'bio' => 'required|max:100',
             'birthDate'=> 'required',
             'location' => 'required',
-            'avatar' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $avatarName = Auth::user()->id.'_avatar'.time().'.'.request()->avatar->getClientOriginalExtension();
         $request->avatar->storeAs('avatars',$avatarName);
@@ -58,13 +58,27 @@ class ProfileController extends Controller
             $request->validate([
                 'firstname' => 'required|max:50',
                 'lastname' => 'required|max:50',
-                'bio' => 'required|max:250'
+                'bio' => 'required|max:250',
+                'location' => 'required|max:250',
+                'birthDate' => 'required',
+                'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
             ]);
 
             $profile = \App\Profile::find($request->id);
             $profile->firstname = $request->firstname;
             $profile->lastname = $request->lastname;
             $profile->bio = $request->bio;
+            $profile->location = $request->location;
+            $profile->birthdate = $request->birthDate;
+            if(!empty($request->avatar)){
+                if($profile->avatar != 'user.jpg'){
+                    Storage::delete($profile->avatar);
+                }
+                $avatarName = Auth::user()->id.'_avatar'.time().'.'.request()->avatar->getClientOriginalExtension();
+                $request->avatar->storeAs('avatars',$avatarName);
+                $profile->avatar = $avatarName;
+            }
 
             $profile->save();
 
@@ -74,11 +88,17 @@ class ProfileController extends Controller
         }
     }
     function showEditProfile(Request $request){
+        if($request->id != Auth::user()->id){
+            return redirect('/home');
+        }
         $profile = \App\Profile::find($request->id);
         return view('tweeter_profile_edit')->with('profile', $profile);
     }
 
     function userDelete(Request $request){
+        if($request->id != Auth::user()->id){
+            return redirect('/home');
+        }
         if(Auth::check()){
             \App\Profile::where('user_id', $request->id)->delete();
             \App\Follow::where('user_id', $request->id)->delete();
@@ -110,5 +130,10 @@ class ProfileController extends Controller
         } else {
             return redirect('/login');
         }
+    }
+
+    function test(Request $request){
+        $test = $request->location;
+        return dd($test);
     }
 }
