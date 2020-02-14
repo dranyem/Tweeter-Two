@@ -24,10 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tweets = \App\Tweet::whereIn('user_id', \App\Follow::where('user_id', Auth::user()->id)->get('followed_by'))
+        if(Auth::check()){
+            $tweets = \App\Tweet::whereIn('user_id', \App\Follow::where('user_id', Auth::user()->id)->get('followed_by'))
                             ->orWhere('user_id', Auth::user()->id)
                             ->latest()
                             ->get();
-        return view('home')->with(['tweets'=>$tweets]);
+            return view('home')->with(['tweets'=>$tweets]);
+        } else {
+            return redirect('/login');
+        }
     }
 }

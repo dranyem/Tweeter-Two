@@ -48,26 +48,26 @@
                             <p class="help is-danger">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="buttons column">
-                        <div class="level">
-                        <button class="button level-item is-success" type="submit">
+                    <div class="field column">
+                         <button class="button is-success" type="submit">
                             <span class="icon is-small">
                                 <i class="fas fa-save"></i>
                             </span>
                             <span>Save</span>
                         </button>
-                        <a href="/user/delete?id={{$profile->user_id}}">
-                            <button class="button level-item is-danger">
-                            <span class="icon is-small">
-                                <i class="fas fa-trash"></i>
-                            </span>
-                            <span>Delete Account</span>
-                        </button>
-                        </a>
                     </div>
                     </div>
+                </form>
+                <a href="/user/delete?id={{Auth::user()->id}}">
+                    <button class="button is-danger">
+                    <span class="icon is-small">
+                        <i class="fas fa-trash"></i>
+                    </span>
+                    <span>Delete Account</span>
+                </button>
+                </a>
                 </div>
-            </form>
+
                 <h1 class="subtitle has-text-primary is-size-5">Profile Information  </h1>
                 <form action="/profile/edit" method="post" enctype="multipart/form-data">
                     @csrf

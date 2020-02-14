@@ -99,6 +99,27 @@
         <!-- Hero content: will be in the middle -->
         <div class="hero-body">
           <div class="container">
+              @if (session('messageSuccess'))
+                <article class="message is-success">
+                    <div class="message-header">
+                    <p>Success</p>
+                    </div>
+                    <div class="message-body">
+                    {{session('messageSuccess')}}
+                    </div>
+                </article>
+              @endif
+
+              @if (session('messageError'))
+                <article class="message is-danger">
+                    <div class="message-header">
+                    <p>Error</p>
+                    </div>
+                    <div class="message-body">
+                    {{session('messageError')}}
+                    </div>
+                </article>
+              @endif
                 @yield('content')
           </div>
         </div>
