@@ -49,5 +49,3 @@ Route::get('/tweet/comment/delete', 'TweetController@commentDelete');
 Route::post('/tweet/comment/edit', 'TweetController@commentEdit');
 Route::get('/tweet/comment/edit', 'TweetController@commentEditView');
 
-
-Route::post('/test', 'ProfileController@test');

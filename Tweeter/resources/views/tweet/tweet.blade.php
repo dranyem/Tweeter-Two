@@ -1,7 +1,7 @@
 <div class="columns">
-    <article class="media column">
+    <article class="media">
         <figure class="media-left">
-            <p class="image is-64x64">
+            <p class="image is-32x32">
             <a href="/profile/view/{{$tweet->user_id}}">
                 <img src="/storage/avatars/{{$tweet->users->profiles->avatar}}">
             </a>

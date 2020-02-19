@@ -2,8 +2,12 @@
 
 @section('content')
 <div class="card">
+    <div class="level">
+        <h1 class="title level-item has-text-primary is-2">{{Auth::user()->profiles->firstname.' '.Auth::user()->profiles->lastname}} </h1>
+    </div>
+
     <header class="card-header">
-        <p class="card-header-title title-has-text-primary is-3">Write a tweet</p>
+        <p class="card-header-title title has-text-primary is-3">Write a tweet</p>
     </header>
     <div class="card-content">
         <div class="content">
@@ -40,6 +44,7 @@
         <p class="card-header-title has-text-primary title is-3">Tweets</p>
     </header>
     <div class="card-content">
+        <h1 class="title">{{$tweets->links('vendor.pagination.bulma')}}</h1>
         <div class="content">
             @foreach ($tweets as $tweet)
             <div class="box">
@@ -47,6 +52,7 @@
             </div>
             @endforeach
         </div>
+        <h1 class="title">{{$tweets->links('vendor.pagination.bulma')}}</h1>
     </div>
 </div>
 @endsection

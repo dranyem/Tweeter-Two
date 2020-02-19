@@ -58,6 +58,7 @@
                     </div>
                     </div>
                 </form>
+
                 <a href="/user/delete?id={{Auth::user()->id}}">
                     <button class="button is-danger">
                     <span class="icon is-small">
@@ -66,7 +67,6 @@
                     <span>Delete Account</span>
                 </button>
                 </a>
-                </div>
 
                 <h1 class="subtitle has-text-primary is-size-5">Profile Information  </h1>
                 <form action="/profile/edit" method="post" enctype="multipart/form-data">
@@ -157,8 +157,7 @@
                               </div>
                         </div>
                     </div>
-                </form>
-
+ </div>
 
         </div>
     </div>

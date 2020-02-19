@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -57,10 +58,14 @@ class ProfileController extends Controller
 
     }
     function showTweetProfile($id){
+        $profile = \App\User::find(Auth::user()->id)->profiles;
+        if($profile == null){
+            return view('profile_setup');
+        }
         if(Auth::check()){
             $profile = \App\User::find($id);
             if($profile===null){
-                return redirect('/home')->with('messageError', 'User Profile does not exist!');
+                return redirect('/home')->with('messageError', 'Profile you want to view does not exist!');
             }
             return view('tweeter_profile',['profile' => $profile]);
         } else {
@@ -104,7 +109,7 @@ class ProfileController extends Controller
     function showEditProfile(Request $request){
         if(Auth::check()){
             if($request->id != Auth::user()->id){
-                return redirect('/home')->with('messageError', 'Not your profile to edit');
+                return redirect('/home')->with('messageError', 'Profile you want to edit does not belong to you!');
             }
             $profile = \App\Profile::find($request->id);
             return view('tweeter_profile_edit')->with('profile', $profile);
@@ -124,8 +129,11 @@ class ProfileController extends Controller
             \App\Comment::where('user_id', $request->id)->delete();
             \App\Like::where('user_id', $request->id)->delete();
             \App\User::destroy($request->id);
+            return redirect('/login')->with('messageSuccess', 'Tweeter Account deleted successfully');
+        } else{
+            return redirect('/login')->with('messageError', 'Please Login to continue!');
         }
-        return redirect('/login')->with('messageError', 'Please Login to continue!');
+
     }
 
     function userEdit(Request $request){
@@ -146,10 +154,5 @@ class ProfileController extends Controller
         } else {
             return redirect('/login')->with('messageError', 'Please Login to continue!');
         }
-    }
-
-    function test(Request $request){
-        $test = $request->location;
-        return dd($test);
     }
 }

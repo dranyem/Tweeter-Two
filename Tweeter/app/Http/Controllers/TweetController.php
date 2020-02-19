@@ -55,7 +55,7 @@ class TweetController extends Controller
             $tweet->content = $request->content;
             $tweet->save();
 
-            return redirect('/tweet/view/'.$request->tweetId);
+            return redirect('/tweet/view/'.$request->tweetId)->with('messageSuccess', 'Tweet edited successfully!');
         }else{
             return redirect('/login')->with('messageError', 'Please Login to continue!');
         }
@@ -104,7 +104,7 @@ class TweetController extends Controller
         if(Auth::check()){
             $tweet =\App\Tweet::orderBy('created_at', 'asc')->find($id);
             if($tweet === null){
-                return redirect('home');
+                return redirect('/home')->with('messageError', 'Tweet does not exist!');
             } else {
                 return view('tweeter_tweet_view', ['tweet'=> $tweet]);
             }
@@ -171,10 +171,11 @@ class TweetController extends Controller
     function commentEditView(Request $request){
         if(Auth::check()){
             $tweet = \App\Tweet::find($request->tweetId);
-            if($tweet == null){
+            $comment = \App\Comment::find($request->commentId);
+            if($tweet == null || $comment == null){
                 return redirect('/home')->with('messageError', 'Comment does not exist!');
             }
-            if($tweet->user_id != Auth::user()->id){
+            if($comment->user_id != Auth::user()->id){
                 return redirect('/home')->with('messageError', 'Comment does not belong to you to edit!');
             }
             return view('tweeter_tweet_comment_edit')->with(['tweet' => $tweet, 'commentId' => $request->commentId]);
