@@ -59,7 +59,7 @@
                     </div>
                 </form>
 
-                <a href="/user/delete?id={{Auth::user()->id}}">
+                <a href="/user/delete?id={{Auth::user()->id}}" onclick= "return confirm('Are You Sure Want to Delete?')">
                     <button class="button is-danger">
                     <span class="icon is-small">
                         <i class="fas fa-trash"></i>

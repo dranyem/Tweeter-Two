@@ -10,11 +10,11 @@ use Redirect;
 class FollowController extends Controller
 {
     function show(){
-        $profile = \App\User::find(Auth::user()->id)->profiles;
-        if($profile == null){
-            return view('profile_setup');
-        }
         if(Auth::check()){
+            $profile = \App\User::find(Auth::user()->id)->profiles;
+            if($profile == null){
+                return view('profile_setup');
+            }
             $followedByUser = \App\User::whereIn('id', \App\Follow::select('followed_by')->where('user_id', Auth::user()->id)->get())
                             ->get();
             $usersToFollow = \App\User::whereNotIn('id', \App\Follow::select('followed_by')->where('user_id', Auth::user()->id)->get())

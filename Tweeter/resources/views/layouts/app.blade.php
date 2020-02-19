@@ -100,7 +100,7 @@
         <div class="hero-body">
           <div class="container">
               @if (session('messageSuccess'))
-                <article class="message is-small is-success">
+                <article class="message is-success">
                     <div class="message-header">
                     <p>Success</p>
                     </div>
@@ -111,7 +111,7 @@
               @endif
 
               @if (session('messageError'))
-                <article class="message is-small is-danger">
+                <article class="message is-danger">
                     <div class="message-header">
                     <p>Error</p>
                     </div>

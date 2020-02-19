@@ -13,16 +13,16 @@
         <article class="media">
             <i class="has-text-primary is-size-4">
                 @if(in_array(Auth::user()->id, $tweet->likes->pluck('user_id')->toArray()))
-                    You
+                    <a class ="has-text-primary" href="/profile/view/{{Auth::user()->id}}">You</a>,
                 @endif
             @foreach ($tweet->likes as $like)
                 @if($tweet->likes->count() == 2)
                     @if(!($like->user_id == Auth::user()->id))
-                        {{$like->users->profiles->firstname}} {{$like->users->profiles->lastname}}
+                        <a class ="has-text-primary" href="/profile/view/{{$like->user_id}}">{{$like->users->profiles->firstname}} {{$like->users->profiles->lastname}}</a>
                     @endif
                 @else
                     @if(!($like->user_id == Auth::user()->id))
-                        {{$like->users->profiles->firstname}} {{$like->users->profiles->lastname}}
+                    <a class ="has-text-primary" href="/profile/view/{{$like->user_id}}">{{$like->users->profiles->firstname}} {{$like->users->profiles->lastname}}</a>,
                     @endif
                 @endif
             @endforeach

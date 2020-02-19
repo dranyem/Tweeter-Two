@@ -58,11 +58,11 @@ class ProfileController extends Controller
 
     }
     function showTweetProfile($id){
-        $profile = \App\User::find(Auth::user()->id)->profiles;
-        if($profile == null){
-            return view('profile_setup');
-        }
         if(Auth::check()){
+            $profile = \App\User::find(Auth::user()->id)->profiles;
+            if($profile == null){
+                return view('profile_setup');
+            }
             $profile = \App\User::find($id);
             if($profile===null){
                 return redirect('/home')->with('messageError', 'Profile you want to view does not exist!');
