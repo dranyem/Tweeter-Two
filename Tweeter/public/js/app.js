@@ -117,15 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-document.querySelectorAll('.modal-button').forEach(function (el) {
-  el.addEventListener('click', function () {
-    var target = document.querySelector(el.getAttribute('data-target'));
-    target.classList.add('is-active');
-    target.querySelector('.modal-close').addEventListener('click', function () {
-      target.classList.remove('is-active');
-    });
-  });
-});
 
 /***/ }),
 
@@ -147,8 +138,8 @@ document.querySelectorAll('.modal-button').forEach(function (el) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /projects/Tweeter/Tweeter/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /projects/Tweeter/Tweeter/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /projects/Tweeter-Two/Tweeter/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /projects/Tweeter-Two/Tweeter/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
