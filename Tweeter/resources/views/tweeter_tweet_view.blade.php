@@ -50,6 +50,11 @@
                             </div>
                             <div class="field">
                                 <p class="control">
+                                    <GiphyButton />
+                                </p>
+                            </div>
+                            <div class="field">
+                                <p class="control">
                                 <button class="button is-link" type="submit">Post comment</button>
                                 </p>
                             </div>

@@ -14,7 +14,7 @@
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('marketing_page');
 });
 
 Auth::routes();
@@ -48,4 +48,3 @@ Route::post('/tweet/comment', 'TweetController@commentOnTweet');
 Route::get('/tweet/comment/delete', 'TweetController@commentDelete');
 Route::post('/tweet/comment/edit', 'TweetController@commentEdit');
 Route::get('/tweet/comment/edit', 'TweetController@commentEditView');
-
