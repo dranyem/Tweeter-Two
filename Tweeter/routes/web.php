@@ -41,8 +41,8 @@ Route::get('/tweet/edit', 'TweetController@editTweetView');
 Route::post('/tweet/edit', 'TweetController@editTweet');
 Route::get('/tweet/delete', 'TweetController@deleteTweet');
 
-Route::get('/tweet/like', 'TweetController@likeTweet');
-Route::get('/tweet/unlike', 'TweetController@unlikeTweet');
+Route::post('/tweet/like', 'TweetController@likeTweet');
+Route::post('/tweet/unlike', 'TweetController@unlikeTweet');
 
 Route::post('/tweet/comment', 'TweetController@commentOnTweet');
 Route::get('/tweet/comment/delete', 'TweetController@commentDelete');

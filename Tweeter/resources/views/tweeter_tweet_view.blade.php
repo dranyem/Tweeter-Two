@@ -50,7 +50,6 @@
                             </div>
                             <div class="field">
                                 <p class="control">
-                                    <GiphyButton />
                                 </p>
                             </div>
                             <div class="field">
