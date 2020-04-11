@@ -35,8 +35,8 @@
                         <i class="fas fa-comment-dots"></i>
                     </span>
                 </div>
-                <tweet-unlike-button :hidden="!this.isLiked" :tweetId="tweetId" />
-                <tweet-like-button :hidden="this.isLiked" :tweet-id="tweetId" />
+                <tweet-unlike-button class="field level-item" :hidden="!this.isLiked" :tweetId="tweetId" />
+                <tweet-like-button class="field level-item" :hidden="this.isLiked" :tweet-id="tweetId" />
 
             </div>
             </nav>

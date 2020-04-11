@@ -20,6 +20,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('Root', require('./components/Root.vue').default);
+Vue.component('Giphy', require('./components/Giphy.vue').default);
 Vue.component('BaseTweet', require('./components/BaseTweet.vue').default);
 
 /**
