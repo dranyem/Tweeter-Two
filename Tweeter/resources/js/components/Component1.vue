@@ -18,10 +18,6 @@ export default {
 </script>
 
 <style scoped>
-/* .container{
-    width: 90vw;
-    height: 50vh;
-} */
 img{
   width: 500px;
 }
