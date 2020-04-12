@@ -19,7 +19,7 @@ export default {
 
 <style scoped>
 img{
-  width: 500px;
+  width: 100%;
 }
 h1{
     text-align: center;

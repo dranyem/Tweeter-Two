@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="container">
       <Component1/>
       <Component2/>
       <Component3/>
