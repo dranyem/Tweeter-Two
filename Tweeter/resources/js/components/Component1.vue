@@ -18,12 +18,12 @@ export default {
 </script>
 
 <style scoped>
-.container{
+/* .container{
     width: 90vw;
     height: 50vh;
-}
+} */
 img{
-  width: 100%;
+  width: 500px;
 }
 h1{
     text-align: center;
