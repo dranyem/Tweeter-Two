@@ -1,14 +1,10 @@
 <template>
-<div class="container animate-first ">
-  <div>
-    <h1 class="title animate-reveal animate-first">Tweeter</h1>
-    <h1 class="subtitle animate-reveal animate-second">See what’s happening in the world right now.</h1>
-  </div>
-  <div>
-    <img src="/storage/bird.jpg" alt="">
-  </div>
-
-</div>
+    <div class="">
+        <h1 class="title animate-reveal animate-first">Tweeter</h1>
+        <h1 class="subtitle animate-reveal animate-second">See what’s happening in the world right now.</h1>
+        <img class="globe" src="https://media.giphy.com/media/8P1BugYCo5NB6GzJaR/giphy.gif" alt="">
+        <img class="owl" src="https://media.giphy.com/media/Wsp3izMNQGVYA0yayA/giphy.gif" alt="">
+    </div>
 </template>
 
 <script>
@@ -19,7 +15,13 @@ export default {
 
 <style scoped>
 img{
-  width: 100%;
+  /* height: 50vh; */
+}
+.owl{
+    width: 250px;
+}
+.globe{
+    width: 250px;
 }
 h1{
     text-align: center;
