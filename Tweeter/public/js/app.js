@@ -2057,10 +2057,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2279,6 +2275,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Component1_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Component1.vue */ "./resources/js/components/Component1.vue");
 /* harmony import */ var _Component2_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Component2.vue */ "./resources/js/components/Component2.vue");
 /* harmony import */ var _Component3_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Component3.vue */ "./resources/js/components/Component3.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6920,8 +6962,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nimg[data-v-4a8eb502]{\n  width: 100%;\n}\nh1[data-v-4a8eb502]{\n    text-align: center;\n    justify-self: center;\n}\n.animate-reveal[data-v-4a8eb502] {\n    font-family: Nunito;\n    opacity: 0;\n    -webkit-animation: reveal-data-v-4a8eb502 2s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;\n            animation: reveal-data-v-4a8eb502 2s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;\n}\n.animate-first[data-v-4a8eb502] {\n    -webkit-animation-delay: 1s;\n            animation-delay: 1s;\n}\n.animate-second[data-v-4a8eb502] {\n    -webkit-animation-delay: 2s;\n            animation-delay: 2s;\n}\n.animate-third[data-v-4a8eb502] {\n    -webkit-animation-delay: 3s;\n            animation-delay: 3s;\n}\n@-webkit-keyframes reveal-data-v-4a8eb502 {\n0% {\n    opacity: 0;\n    -webkit-transform: translateY(100%);\n            transform: translateY(100%);\n}\n100% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0);\n}\n}\n@keyframes reveal-data-v-4a8eb502 {\n0% {\n    opacity: 0;\n    -webkit-transform: translateY(100%);\n            transform: translateY(100%);\n}\n100% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0);\n}\n}\n", ""]);
-
+exports.push([module.i, "\nimg[data-v-4a8eb502]{\n  /* height: 50vh; */\n}\n.owl[data-v-4a8eb502]{\n    width: 250px;\n}\n.globe[data-v-4a8eb502]{\n    width: 250px;\n}\nh1[data-v-4a8eb502]{\n    text-align: center;\n    justify-self: center;\n}\n.animate-reveal[data-v-4a8eb502] {\n    font-family: Nunito;\n    opacity: 0;\n    -webkit-animation: reveal-data-v-4a8eb502 2s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;\n            animation: reveal-data-v-4a8eb502 2s cubic-bezier(0, 1, 0.5, 1) 1 normal forwards;\n}\n.animate-first[data-v-4a8eb502] {\n    -webkit-animation-delay: 1s;\n            animation-delay: 1s;\n}\n.animate-second[data-v-4a8eb502] {\n    -webkit-animation-delay: 2s;\n            animation-delay: 2s;\n}\n.animate-third[data-v-4a8eb502] {\n    -webkit-animation-delay: 3s;\n            animation-delay: 3s;\n}\n@-webkit-keyframes reveal-data-v-4a8eb502 {\n0% {\n    opacity: 0;\n    -webkit-transform: translateY(100%);\n            transform: translateY(100%);\n}\n100% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0);\n}\n}\n@keyframes reveal-data-v-4a8eb502 {\n0% {\n    opacity: 0;\n    -webkit-transform: translateY(100%);\n            transform: translateY(100%);\n}\n100% {\n    opacity: 1;\n    -webkit-transform: translateY(0);\n            transform: translateY(0);\n}\n}\n", ""]);
 // exports
 
 
@@ -38654,18 +38695,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container animate-first " }, [
-      _c("div", [
-        _c("h1", { staticClass: "title animate-reveal animate-first" }, [
-          _vm._v("Tweeter")
-        ]),
-        _vm._v(" "),
-        _c("h1", { staticClass: "subtitle animate-reveal animate-second" }, [
-          _vm._v("See what’s happening in the world right now.")
-        ])
+    return _c("div", {}, [
+      _c("h1", { staticClass: "title animate-reveal animate-first" }, [
+        _vm._v("Tweeter")
       ]),
       _vm._v(" "),
-      _c("div", [_c("img", { attrs: { src: "/storage/bird.jpg", alt: "" } })])
+      _c("h1", { staticClass: "subtitle animate-reveal animate-second" }, [
+        _vm._v("See what’s happening in the world right now.")
+      ]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "globe",
+        attrs: {
+          src: "https://media.giphy.com/media/8P1BugYCo5NB6GzJaR/giphy.gif",
+          alt: ""
+        }
+      }),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "owl",
+        attrs: {
+          src: "https://media.giphy.com/media/Wsp3izMNQGVYA0yayA/giphy.gif",
+          alt: ""
+        }
+      })
     ])
   }
 ]
@@ -38910,20 +38963,96 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("Component1"),
-      _vm._v(" "),
-      _c("Component2"),
-      _vm._v(" "),
-      _c("Component3")
-    ],
-    1
-  )
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tile is-ancestor" }, [
+      _c("div", { staticClass: "tile is-vertical is-8" }, [
+        _c("div", { staticClass: "tile" }, [
+          _c("div", { staticClass: "tile is-parent is-vertical" }, [
+            _c(
+              "article",
+              { staticClass: "tile is-child notification is-primary" },
+              [
+                _c("p", { staticClass: "title" }, [_vm._v("Vertical...")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "subtitle" }, [_vm._v("Top tile")])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "article",
+              { staticClass: "tile is-child notification is-warning" },
+              [
+                _c("p", { staticClass: "title" }, [_vm._v("...tiles")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "subtitle" }, [_vm._v("Bottom tile")])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "tile is-parent" }, [
+            _c(
+              "article",
+              { staticClass: "tile is-child notification is-info" },
+              [
+                _c("p", { staticClass: "title" }, [_vm._v("Middle tile")]),
+                _vm._v(" "),
+                _c("p", { staticClass: "subtitle" }, [_vm._v("With an image")]),
+                _vm._v(" "),
+                _c("figure", { staticClass: "image is-4by3" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "https://bulma.io/images/placeholders/640x480.png"
+                    }
+                  })
+                ])
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "tile is-parent" }, [
+          _c(
+            "article",
+            { staticClass: "tile is-child notification is-danger" },
+            [
+              _c("p", { staticClass: "title" }, [_vm._v("Wide tile")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "subtitle" }, [
+                _vm._v("Aligned with the right tile")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" })
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "tile is-parent" }, [
+        _c(
+          "article",
+          { staticClass: "tile is-child notification is-success" },
+          [
+            _c("div", { staticClass: "content" }, [
+              _c("p", { staticClass: "title" }, [_vm._v("Tall tile")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "subtitle" }, [
+                _vm._v("With even more content")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content" })
+            ])
+          ]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
