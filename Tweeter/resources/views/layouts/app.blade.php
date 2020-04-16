@@ -9,7 +9,10 @@
 
     <title>Tweeter</title>
 
-
+    <meta name="keywords" content="Social, Tweeter, Connect, be updated">
+    <meta name="description"
+        content="Tweeter, Connect and socialize with friends and family.">
+    <meta name="author" content="Tweeter Inc.">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -138,6 +141,11 @@
     {{-- </Root> --}}
 
      <!-- Scripts -->
+     <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
      <script src="{{ asset('js/app.js') }}" ></script>
 </body>
 </html>
